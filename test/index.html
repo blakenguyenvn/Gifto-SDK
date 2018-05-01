@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gifto SDK - Demo</title>
+        <meta charset="utf-8"/>
+        <meta name=viewport content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../src/gifto-sdk.css">
+        <script src="../src/gifto-sdk-lib.js"></script>
+        <script src="../src/gifto-sdk-api.js"></script>
+        <script src="../src/gifto-wallet.js"></script>
+
+        <script type="text/javascript">
+            var GiftoWallet = new GiftoWallet({
+                apikey: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJyb3NlY29pbmFkbWluIiwic3ViIjoicGFydG5lcl9hcGlfY2FsbCJ9.yy7vxDM4204gKv319RWC6fVlP2ZEikCHCRqkhSeVFuI='
+            });
+        </script>
+
+    </head>
+    <body class="gw-demo" style="background: #fff;">
+        <div class="uk-container" style="padding-top: 100px;">
+            <h1 class="uk-heading-bullet">Getting Started</h1>
+            <p>We can install Gifto SDK for web by:</p>
+            <ul uk-tab>
+                <li><a href="#">Github</a></li>
+                <li><a href="#">NPM</a></li>
+                <li><a href="#">Bower</a></li>
+            </ul>
+
+            <ul class="uk-switcher uk-margin">
+                <li>Github Link here: </li>
+                <li>NPM Command:</li>
+                <li>Bower Command:</li>
+            </ul>
+            <p></p>
+            <div>
+                <h3>Init SDK with API Key:</h3>
+                <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;link</span> <span style="color: #BB4444">rel=&quot;stylesheet&quot;</span> <span style="color: #BB4444">type=&quot;text/css&quot;</span> <span style="color: #BB4444">href=&quot;../src/gifto-sdk.css&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+
+<span style="color: #008000; font-weight: bold">&lt;script </span><span style="color: #BB4444">src=&quot;../src/gifto-sdk-lib.js&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;script </span><span style="color: #BB4444">src=&quot;../src/gifto-sdk-api.js&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;script </span><span style="color: #BB4444">src=&quot;../src/gifto-wallet.js&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;script </span><span style="color: #BB4444">type=&quot;text/javascript&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #AA22FF; font-weight: bold">var</span> GiftoWallet <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> GiftoWallet({
+        apikey<span style="color: #666666">:</span> <span style="color: #BB4444">&#39;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJyb3NlY29pbmFkbWluIiwic3ViIjoicGFydG5lcl9hcGlfY2FsbCJ9.yy7vxDM4204gKv319RWC6fVlP2ZEikCHCRqkahSeVsFuI=&#39;</span>
+    });
+<span style="color: #008000; font-weight: bold">&lt;/script&gt;</span>
+</pre></div>
+
+            </div>
+        </div>
+        <!-- Create Wallet -->
+        <div class="uk-container" style="padding-top: 100px;">
+            <h1 class="uk-heading-bullet">API Demo: Create Wallet</h1>
+            <ul uk-tab>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">Javascript API</a></li>
+            </ul>
+
+            <ul class="uk-switcher uk-margin">
+                <li>
+
+                            <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;form</span> <span style="color: #BB4444">id=&quot;gw-create-wallet-form&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Email Address --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;span</span> <span style="color: #BB4444">class=&quot;uk-form-icon&quot;</span> <span style="color: #BB4444">uk-icon=&quot;icon: mail&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/span&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_identityData&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;email&quot;</span> <span style="color: #BB4444">placeholder=&quot;Gifto wallet email address register&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+        <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Email Address --&gt;</span>
+        <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Firstname --&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;span</span> <span style="color: #BB4444">class=&quot;uk-form-icon&quot;</span> <span style="color: #BB4444">uk-icon=&quot;icon: user&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/span&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_firstname&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">placeholder=&quot;Firstname&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+            <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Firstname --&gt;</span>
+            <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Lastname --&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;span</span> <span style="color: #BB4444">class=&quot;uk-form-icon&quot;</span> <span style="color: #BB4444">uk-icon=&quot;icon: user&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/span&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_lastname&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">placeholder=&quot;Lastname&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Lastname --&gt;</span>
+                <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Wallet Password --&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;span</span> <span style="color: #BB4444">class=&quot;uk-form-icon&quot;</span> <span style="color: #BB4444">uk-icon=&quot;icon: lock&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/span&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_passphrase&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;password&quot;</span> <span style="color: #BB4444">placeholder=&quot;Gifto wallet password&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                    <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Wallet Password --&gt;</span>
+                    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Wallet Create Submit Field --&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;button</span> <span style="color: #BB4444">onclick=&quot;GiftoWallet.gwCreateWallet(&#39;gw-create-wallet-form&#39;)&quot;</span> <span style="color: #BB4444">type=&quot;button&quot;</span> <span style="color: #BB4444">class=&quot;uk-button uk-button-primary&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Create new Wallet<span style="color: #008000; font-weight: bold">&lt;/button&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                    <span style="color: #008800; font-style: italic">&lt;!-- Close GW Wallet Create Submit Field --&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;/form&gt;</span>
+</pre></div> 
+                       
+                </li>
+                <li>
+                 
+                            <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">GiftoWallet.prototype.gwCreateWallet <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">function</span> (form_id) {
+    <span style="color: #AA22FF; font-weight: bold">if</span> ( form_id <span style="color: #666666">==</span> <span style="color: #AA22FF; font-weight: bold">undefined</span> <span style="color: #666666">||</span> form_id <span style="color: #666666">==</span> <span style="color: #AA22FF; font-weight: bold">null</span> ) {
+                
+        console.error(<span style="color: #BB4444">&#39;Create new wallet missing formId&#39;</span>);
+        <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">false</span>;
+
+    } <span style="color: #AA22FF; font-weight: bold">else</span> {
+
+        <span style="color: #AA22FF; font-weight: bold">var</span> FormApi <span style="color: #666666">=</span> <span style="color: #AA22FF">document</span>.getElementById(form_id);
+        <span style="color: #AA22FF; font-weight: bold">var</span> formData <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> FormData(FormApi);
+        
+        <span style="color: #008800; font-style: italic">//== Validate form data</span>
+        <span style="color: #AA22FF; font-weight: bold">var</span> validationResult <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">this</span>.createWalletValidation(formData);
+        <span style="color: #AA22FF; font-weight: bold">if</span> ( validationResult.length <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span> ) {
+            <span style="color: #AA22FF; font-weight: bold">this</span>.showValidateError(validationResult);
+            <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">false</span>;
+        }
+
+        <span style="color: #AA22FF; font-weight: bold">var</span> requestApi <span style="color: #666666">=</span> {
+            identityData<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_identityData&#39;</span>),
+            firstname<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_firstname&#39;</span>),
+            lastname<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_lastname&#39;</span>),
+            passphrase<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_passphrase&#39;</span>)
+        };
+        
+        <span style="color: #AA22FF; font-weight: bold">var</span> result <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">this</span>.giftoAPI.createWallet(requestApi, <span style="color: #AA22FF; font-weight: bold">function</span>(response){
+            FormApi.reset();
+        });
+    }   
+}
+</pre></div>
+
+                        
+                </li>
+            </ul>
+            <p>Click to test SDK function</p>
+            <button class="uk-button uk-button-primary" uk-toggle="target: #create-wallet-modal">Create Wallet</button>
+
+            <!-- Begin: Create Wallet Modal -->
+            <div id="create-wallet-modal" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    
+                    <h2 class="uk-modal-title">Create New Wallet</h2>
+                    <form id="gw-create-wallet-form">
+                        <!-- Begin GW Field: Email Address -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input name="gw_identityData" class="uk-input uk-form-width-large" type="email" placeholder="Gifto wallet email address register">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Email Address -->
+
+                        <!-- Begin GW Field: Firstname -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                <input name="gw_firstname" class="uk-input uk-form-width-large" type="text" placeholder="Firstname">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Firstname -->
+
+                        <!-- Begin GW Field: Lastname -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                <input name="gw_lastname" class="uk-input uk-form-width-large" type="text" placeholder="Lastname">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Lastname -->
+
+                        <!-- Begin GW Field: Wallet Password -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                <input name="gw_passphrase" class="uk-input uk-form-width-large" type="password" placeholder="Gifto wallet password">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Wallet Password -->
+
+                        <!-- Begin GW Wallet Create Submit Field -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <button onclick="GiftoWallet.gwCreateWallet('gw-create-wallet-form')" type="button" class="uk-button uk-button-primary">Create new Wallet</button>
+                            </div>
+                        </div>
+                        <!-- Close GW Wallet Create Submit Field -->
+                    </form>
+                </div>
+            </div>
+            <!-- Close: Create Wallet Modal -->
+        </div>
+        <!-- Init Wallet -->
+        <div class="uk-container" style="padding-top: 100px;">
+            <h1 class="uk-heading-bullet">API Demo: Wallet detail</h1>
+            <ul uk-tab>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">Javascript API</a></li>
+            </ul>
+
+            <ul class="uk-switcher uk-margin">
+                <li>
+
+                    <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;form</span> <span style="color: #BB4444">id=&quot;gw-wallet-detail-form&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Email Address --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;span</span> <span style="color: #BB4444">class=&quot;uk-form-icon&quot;</span> <span style="color: #BB4444">uk-icon=&quot;icon: mail&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/span&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_identityData&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;email&quot;</span> <span style="color: #BB4444">placeholder=&quot;Gifto wallet email address register&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Email Address --&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Wallet Create Submit Field --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;button</span> <span style="color: #BB4444">onclick=&quot;GiftoWallet.gwGetWalletDetail(&#39;gw-wallet-detail-form&#39;)&quot;</span> <span style="color: #BB4444">type=&quot;button&quot;</span> <span style="color: #BB4444">class=&quot;uk-button uk-button-primary&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Detail wallet<span style="color: #008000; font-weight: bold">&lt;/button&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Close GW Wallet Create Submit Field --&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/form&gt;</span>
+</pre></div>
+
+                       
+                </li>
+                <li>
+                 
+                     <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * Get Wallet Detail</span>
+<span style="color: #008800; font-style: italic"> */</span>
+GiftoWallet.prototype.gwGetWalletDetail <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">function</span> (form_id) {
+    <span style="color: #AA22FF; font-weight: bold">if</span> ( form_id <span style="color: #666666">==</span> <span style="color: #AA22FF; font-weight: bold">undefined</span> <span style="color: #666666">||</span> form_id <span style="color: #666666">==</span> <span style="color: #AA22FF; font-weight: bold">null</span> ) {
+                
+        console.error(<span style="color: #BB4444">&#39;Detail wallet missing formId&#39;</span>);
+        <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">false</span>;
+
+    } <span style="color: #AA22FF; font-weight: bold">else</span> {
+
+        <span style="color: #AA22FF; font-weight: bold">var</span> FormApi <span style="color: #666666">=</span> <span style="color: #AA22FF">document</span>.getElementById(form_id);
+        <span style="color: #AA22FF; font-weight: bold">var</span> formData <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> FormData(FormApi);
+
+        <span style="color: #008800; font-style: italic">//== Validate form data</span>
+        <span style="color: #AA22FF; font-weight: bold">var</span> validationResult <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">this</span>.detailWalletValidation(formData);
+        <span style="color: #AA22FF; font-weight: bold">if</span> ( validationResult.length <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span> ) {
+            <span style="color: #AA22FF; font-weight: bold">this</span>.showValidateError(validationResult);
+            <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">false</span>;
+        }
+        
+        <span style="color: #AA22FF; font-weight: bold">var</span> requestApi <span style="color: #666666">=</span> {
+            identityData<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_identityData&#39;</span>)
+        };
+        
+        <span style="color: #AA22FF; font-weight: bold">var</span> result <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">this</span>.giftoAPI.detailWallet(requestApi, <span style="color: #AA22FF; font-weight: bold">function</span>(response){
+            FormApi.reset();
+        });
+
+        <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">true</span>;
+    }
+}
+</pre></div>
+
+
+                        
+                </li>
+            </ul>
+            <p>Click to test SDK function</p>
+
+            <button class="uk-button uk-button-primary" uk-toggle="target: #detail-wallet-modal">Wallet Detail</button>
+
+             <!-- This is the modal -->
+            <div id="detail-wallet-modal" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">Wallet Detail</h2>
+                    <form id="gw-wallet-detail-form">
+                        <!-- Begin GW Field: Email Address -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input name="gw_identityData" class="uk-input uk-form-width-large" type="email" placeholder="Gifto wallet email address register">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Email Address -->
+
+                        <!-- Begin GW Wallet Create Submit Field -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <button onclick="GiftoWallet.gwGetWalletDetail('gw-wallet-detail-form')" type="button" class="uk-button uk-button-primary">Detail wallet</button>
+                            </div>
+                        </div>
+                        <!-- Close GW Wallet Create Submit Field -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Transfer Gifto -->
+        <div class="uk-container" style="padding-top: 100px;">
+            <h1 class="uk-heading-bullet">API Demo: Transfer Gifto</h1>
+            
+            <ul uk-tab>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">Javascript API</a></li>
+            </ul>
+
+            <ul class="uk-switcher uk-margin">
+                <li>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;form</span> <span style="color: #BB4444">id=&quot;gw-transfer-gifto-form&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Email Address --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;span</span> <span style="color: #BB4444">class=&quot;uk-form-icon&quot;</span> <span style="color: #BB4444">uk-icon=&quot;icon: mail&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/span&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_identityData&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;email&quot;</span> <span style="color: #BB4444">placeholder=&quot;Gifto wallet email address register&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+        <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Email Address --&gt;</span>
+        <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Amount --&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_amount&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;number&quot;</span> <span style="color: #BB4444">placeholder=&quot;Amount of gifto&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+            <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Amount --&gt;</span>
+            <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Currency code --&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">disabled</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">value=&quot;Gifto&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;hidden&quot;</span> <span style="color: #BB4444">name=&quot;gw_currencyCode&quot;</span> <span style="color: #BB4444">value=&quot;Gifto&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                    <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Currentcy code --&gt;</span>
+                    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: To Wallet Address --&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;span</span> <span style="color: #BB4444">class=&quot;uk-form-icon&quot;</span> <span style="color: #BB4444">uk-icon=&quot;icon: mail&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/span&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_toWalletAddress&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;email&quot;</span> <span style="color: #BB4444">placeholder=&quot;Wallet Address to transfer&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                        <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: To Wallet Address --&gt;</span>
+                        <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: referenceId --&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">disabled</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">value=&quot;referenceId&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;hidden&quot;</span> <span style="color: #BB4444">name=&quot;gw_referenceId&quot;</span> <span style="color: #BB4444">value=&quot;referenceId&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                                <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: referenceId --&gt;</span>
+                                <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: note --&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                        <span style="color: #008000; font-weight: bold">&lt;textarea</span> <span style="color: #BB4444">class=&quot;uk-textarea&quot;</span> <span style="color: #BB4444">name=&quot;gw_note&quot;</span> <span style="color: #BB4444">placeholder=&quot;Transaction note&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/textarea&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                                <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: note --&gt;</span>
+                                <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Wallet Transaction Mode --&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                        <span style="color: #008000; font-weight: bold">&lt;select</span> <span style="color: #BB4444">class=&quot;uk-select&quot;</span> <span style="color: #BB4444">name=&quot;gw_transferFeeType&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                            <span style="color: #008000; font-weight: bold">&lt;option</span> <span style="color: #BB4444">value=&quot;sender&quot;</span> <span style="color: #BB4444">selected=&quot;selected&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Sender<span style="color: #008000; font-weight: bold">&lt;/option&gt;</span>
+                                            <span style="color: #008000; font-weight: bold">&lt;option</span> <span style="color: #BB4444">value=&quot;receiver&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Receiver<span style="color: #008000; font-weight: bold">&lt;/option&gt;</span>
+                                        <span style="color: #008000; font-weight: bold">&lt;/select&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                                <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Wallet Transaction Mode --&gt;</span>
+                                <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Wallet Password --&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                        <span style="color: #008000; font-weight: bold">&lt;span</span> <span style="color: #BB4444">class=&quot;uk-form-icon&quot;</span> <span style="color: #BB4444">uk-icon=&quot;icon: lock&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/span&gt;</span>
+                                        <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_passphrase&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;password&quot;</span> <span style="color: #BB4444">placeholder=&quot;Gifto wallet password&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                                    <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Wallet Password --&gt;</span>
+                                    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Wallet Create Submit Field --&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                            <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;hidden&quot;</span> <span style="color: #BB4444">name=&quot;gw_type&quot;</span> <span style="color: #BB4444">value=&quot;transfer&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                                                <span style="color: #008000; font-weight: bold">&lt;button</span> <span style="color: #BB4444">onclick=&quot;GiftoWallet.gwTransferGifto(&#39;gw-transfer-gifto-form&#39;)&quot;</span> <span style="color: #BB4444">type=&quot;button&quot;</span> <span style="color: #BB4444">class=&quot;uk-button uk-button-primary&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Transfer Gifto<span style="color: #008000; font-weight: bold">&lt;/button&gt;</span>
+                                            <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                                        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+                                        <span style="color: #008800; font-style: italic">&lt;!-- Close GW Wallet Create Submit Field --&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;/form&gt;</span>
+</pre></div>
+
+
+                       
+                </li>
+                <li>
+                 
+                    <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * Get Transfer Gifto</span>
+<span style="color: #008800; font-style: italic"> */</span>
+GiftoWallet.prototype.gwTransferGifto <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">function</span> (form_id) {
+    <span style="color: #AA22FF; font-weight: bold">if</span> ( form_id <span style="color: #666666">==</span> <span style="color: #AA22FF; font-weight: bold">undefined</span> <span style="color: #666666">||</span> form_id <span style="color: #666666">==</span> <span style="color: #AA22FF; font-weight: bold">null</span> ) {
+                
+        console.error(<span style="color: #BB4444">&#39;Tranfer Gifto missing formId&#39;</span>);
+        <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">false</span>;
+
+    } <span style="color: #AA22FF; font-weight: bold">else</span> {
+
+        <span style="color: #AA22FF; font-weight: bold">var</span> FormApi <span style="color: #666666">=</span> <span style="color: #AA22FF">document</span>.getElementById(form_id);
+        <span style="color: #AA22FF; font-weight: bold">var</span> formData <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> FormData(FormApi);
+
+        <span style="color: #008800; font-style: italic">//== Validate form data</span>
+        <span style="color: #AA22FF; font-weight: bold">var</span> validationResult <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">this</span>.transferWalletValidation(formData);
+        <span style="color: #AA22FF; font-weight: bold">if</span> ( validationResult.length <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span> ) {
+            <span style="color: #AA22FF; font-weight: bold">this</span>.showValidateError(validationResult);
+            <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">false</span>;
+        }
+        
+        <span style="color: #AA22FF; font-weight: bold">var</span> requestApi <span style="color: #666666">=</span> {
+            identityData<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_identityData&#39;</span>),
+            currencyCode<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_currencyCode&#39;</span>),
+            passphrase<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_passphrase&#39;</span>), 
+
+            toWalletAddress<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_toWalletAddress&#39;</span>),
+            amount<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_amount&#39;</span>),
+            referenceId<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_referenceId&#39;</span>),
+            note<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_note&#39;</span>),
+
+            transferFeeType<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_transferFeeType&#39;</span>), 
+            type<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_type&#39;</span>),
+        };
+        
+        <span style="color: #AA22FF; font-weight: bold">var</span> result <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">this</span>.giftoAPI.transferCoin(requestApi, <span style="color: #AA22FF; font-weight: bold">function</span>(response){
+            FormApi.reset();
+        });
+
+        <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">true</span>;
+    }
+}
+</pre></div>
+
+
+                        
+                </li>
+            </ul>
+
+            <p>Click to test SDK function</p>
+
+            <button class="uk-button uk-button-primary" uk-toggle="target: #transfer-gifto-modal">Transfer Gifto</button>
+
+             <!-- This is the modal -->
+            <div id="transfer-gifto-modal" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">Transfer Gifto</h2>
+                    <form id="gw-transfer-gifto-form">
+                        <!-- Begin GW Field: Email Address -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input name="gw_identityData" class="uk-input uk-form-width-large" type="email" placeholder="Gifto wallet email address register">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Email Address -->
+
+                         <!-- Begin GW Field: Amount -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input name="gw_amount" class="uk-input uk-form-width-large" type="number" placeholder="Amount of gifto">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Amount -->
+
+                        <!-- Begin GW Field: Currency code -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input disabled class="uk-input uk-form-width-large" type="text" value="Gifto">
+                                <input type="hidden" name="gw_currencyCode" value="Gifto">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Currentcy code -->
+
+                        <!-- Begin GW Field: To Wallet Address -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input name="gw_toWalletAddress" class="uk-input uk-form-width-large" type="email" placeholder="Wallet Address to transfer">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: To Wallet Address -->
+
+                        <!-- Begin GW Field: referenceId -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input disabled class="uk-input uk-form-width-large" type="text" value="referenceId">
+                                <input type="hidden" name="gw_referenceId" value="referenceId">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: referenceId -->
+
+                        <!-- Begin GW Field: note -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                 <textarea class="uk-textarea" name="gw_note" placeholder="Transaction note"></textarea>
+                            </div>
+                        </div>
+                        <!-- Close GW Field: note -->
+
+                         <!-- Begin GW Field: Wallet Transaction Mode -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                               <select class="uk-select" name="gw_transferFeeType">
+                                    <option value="sender" selected="selected">Sender</option>
+                                    <option value="receiver">Receiver</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Wallet Transaction Mode -->
+
+                         <!-- Begin GW Field: Wallet Password -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                <input name="gw_passphrase" class="uk-input uk-form-width-large" type="password" placeholder="Gifto wallet password">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Wallet Password -->
+
+                       
+                        <!-- Begin GW Wallet Create Submit Field -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input type="hidden" name="gw_type" value="transfer">
+                                <button onclick="GiftoWallet.gwTransferGifto('gw-transfer-gifto-form')" type="button" class="uk-button uk-button-primary">Transfer Gifto</button>
+                            </div>
+                        </div>
+                        <!-- Close GW Wallet Create Submit Field -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- List Transaction -->
+        <div class="uk-container" style="padding-top: 100px;">
+            <h1 class="uk-heading-bullet">API Demo: List Transaction</h1>
+             <ul uk-tab>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">Javascript API</a></li>
+            </ul>
+
+            <ul class="uk-switcher uk-margin">
+                <li>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;form</span> <span style="color: #BB4444">id=&quot;gw-transaction-list-form&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Email Address --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;span</span> <span style="color: #BB4444">class=&quot;uk-form-icon&quot;</span> <span style="color: #BB4444">uk-icon=&quot;icon: mail&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/span&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_identityData&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;email&quot;</span> <span style="color: #BB4444">placeholder=&quot;Gifto wallet email address register&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+<span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Email Address --&gt;</span>
+<span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Firstname --&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_offset&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;number&quot;</span> <span style="color: #BB4444">placeholder=&quot;List offset&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+<span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Firstname --&gt;</span>
+<span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Lastname --&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">name=&quot;gw_limit&quot;</span> <span style="color: #BB4444">class=&quot;uk-input uk-form-width-large&quot;</span> <span style="color: #BB4444">type=&quot;number&quot;</span> <span style="color: #BB4444">placeholder=&quot;List limit&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Lastname --&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Wallet Transaction Mode --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;select</span> <span style="color: #BB4444">class=&quot;uk-select&quot;</span> <span style="color: #BB4444">name=&quot;gw_transactionType&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;option</span> <span style="color: #BB4444">value=&quot;all&quot;</span> <span style="color: #BB4444">selected=&quot;selected&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>All<span style="color: #008000; font-weight: bold">&lt;/option&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;option</span> <span style="color: #BB4444">value=&quot;tranfer&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Transfer<span style="color: #008000; font-weight: bold">&lt;/option&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;option</span> <span style="color: #BB4444">value=&quot;tip&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/option&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;option</span> <span style="color: #BB4444">value=&quot;withdraw&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/option&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/select&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Wallet Transaction Mode --&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Field: Wallet Transaction Mode --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;select</span> <span style="color: #BB4444">class=&quot;uk-select&quot;</span> <span style="color: #BB4444">name=&quot;gw_transactionMode&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;option</span> <span style="color: #BB4444">value=&quot;send&quot;</span> <span style="color: #BB4444">selected=&quot;selected&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Send<span style="color: #008000; font-weight: bold">&lt;/option&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;option</span> <span style="color: #BB4444">value=&quot;receive&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Receive<span style="color: #008000; font-weight: bold">&lt;/option&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/select&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Close GW Field: Wallet Transaction Mode --&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Begin GW Wallet Create Submit Field --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-margin&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;uk-inline&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;button</span> <span style="color: #BB4444">onclick=&quot;GiftoWallet.gwListTransactions(&#39;gw-transaction-list-form&#39;)&quot;</span> <span style="color: #BB4444">type=&quot;button&quot;</span> <span style="color: #BB4444">class=&quot;uk-button uk-button-primary&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>List transactions<span style="color: #008000; font-weight: bold">&lt;/button&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- Close GW Wallet Create Submit Field --&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/form&gt;</span>
+</pre></div>
+
+
+                       
+                </li>
+                <li>
+                 
+                  <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * Get List Transaction</span>
+<span style="color: #008800; font-style: italic"> */</span>
+GiftoWallet.prototype.gwListTransactions <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">function</span> (form_id) {
+    <span style="color: #AA22FF; font-weight: bold">if</span> ( form_id <span style="color: #666666">==</span> <span style="color: #AA22FF; font-weight: bold">undefined</span>  <span style="color: #666666">||</span> form_id <span style="color: #666666">==</span> <span style="color: #AA22FF; font-weight: bold">null</span> ) {
+                
+        console.error(<span style="color: #BB4444">&#39;Get list transactions formId&#39;</span>);
+        <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">false</span>;
+
+    } <span style="color: #AA22FF; font-weight: bold">else</span> {
+
+        <span style="color: #AA22FF; font-weight: bold">var</span> FormApi <span style="color: #666666">=</span> <span style="color: #AA22FF">document</span>.getElementById(form_id);
+        <span style="color: #AA22FF; font-weight: bold">var</span> formData <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> FormData(FormApi);
+
+        <span style="color: #008800; font-style: italic">//== Validate form data</span>
+        <span style="color: #AA22FF; font-weight: bold">var</span> validationResult <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">this</span>.listTransactionValidation(formData);
+        <span style="color: #AA22FF; font-weight: bold">if</span> ( validationResult.length <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span> ) {
+            <span style="color: #AA22FF; font-weight: bold">this</span>.showValidateError(validationResult);
+            <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">false</span>;
+        }
+        
+        <span style="color: #AA22FF; font-weight: bold">var</span> requestApi <span style="color: #666666">=</span> {
+            identityData<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_identityData&#39;</span>),
+            offset<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_offset&#39;</span>),
+            limit<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_limit&#39;</span>),
+            transactionType<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_transactionType&#39;</span>),
+            transactionMode<span style="color: #666666">:</span> formData.get(<span style="color: #BB4444">&#39;gw_transactionMode&#39;</span>)
+        };
+        
+        <span style="color: #AA22FF; font-weight: bold">var</span> result <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">this</span>.giftoAPI.listTransactions(requestApi, <span style="color: #AA22FF; font-weight: bold">function</span>(response){
+            FormApi.reset();
+        });
+        
+    }
+}
+</pre></div>
+
+
+
+                        
+                </li>
+            </ul>
+            <p>Click to test SDK function</p>
+
+            <button class="uk-button uk-button-primary" uk-toggle="target: #list-transaction-modal">List Transactions</button>
+
+            <!-- This is the modal -->
+            <div id="list-transaction-modal" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">List Transaction</h2>
+                    <form id="gw-transaction-list-form">
+                        <!-- Begin GW Field: Email Address -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input name="gw_identityData" class="uk-input uk-form-width-large" type="email" placeholder="Gifto wallet email address register">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Email Address -->
+
+                        <!-- Begin GW Field: Firstname -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input name="gw_offset" class="uk-input uk-form-width-large" type="number" placeholder="List offset">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Firstname -->
+
+                        <!-- Begin GW Field: Lastname -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input name="gw_limit" class="uk-input uk-form-width-large" type="number" placeholder="List limit">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Lastname -->
+
+                        <!-- Begin GW Field: Wallet Transaction Mode -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                               <select class="uk-select" name="gw_transactionType">
+                                    <option value="all" selected="selected">All</option>
+                                    <option value="tranfer">Transfer</option>
+                                    <option value="tip"></option>
+                                    <option value="withdraw"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Wallet Transaction Mode -->
+
+                        <!-- Begin GW Field: Wallet Transaction Mode -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                               <select class="uk-select" name="gw_transactionMode">
+                                    <option value="send" selected="selected">Send</option>
+                                    <option value="receive">Receive</option>
+                                    <option value="tip">Tip</option>
+                                    <option value="withdraw">Withdraw</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Wallet Transaction Mode -->
+
+                        <!-- Begin GW Wallet Create Submit Field -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <button onclick="GiftoWallet.gwListTransactions('gw-transaction-list-form')" type="button" class="uk-button uk-button-primary">List transactions</button>
+                            </div>
+                        </div>
+                        <!-- Close GW Wallet Create Submit Field -->
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-container" style="padding-top: 100px;"></div>
+
+        <
+    </body>
+</html>

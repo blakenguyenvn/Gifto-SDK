@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gifto SDK - Demo</title>
+        <meta charset="utf-8"/>
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../src/gifto-sdk.css">
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" src="../src/gifto-sdk-api.js"></script>   
+        <script src="../src/gifto-sdk-lib.js"></script>
+        <script src="../src/gifto-wallet.js"></script>
+
+        <script type="text/javascript">
+            var GiftoWallet  = new GiftoWallet({
+                apikey: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJyb3NlY29pbmFkbWluIiwic3ViIjoicGFydG5lcl9hcGlfY2FsbCJ9.yy7vxDM4204gKv319RWC6fVlP2ZEikCHCRqkhSeVFuI='
+            });
+        </script>
+    </head>
+    <body style="background: #fff;">
+        <!-- Create Wallet -->
+        <div class="uk-container" style="padding-top: 100px;">
+            <h1 class="uk-heading-bullet">Create Wallet</h1>
+            <p class="code">Javascript SDK: <span class="uk-text-success">window.GiftoSDKApi.createWallet()</span></p>
+            <p class="code">Javascript SDK HTML: <span class="uk-text-success">window.GiftoSDKApi.createNewWallet()</span></p>
+            <p>Click to test SDK function</p>
+            <button class="uk-button" uk-toggle="target: #create-wallet-modal">Create Wallet</button>
+
+            <!-- Begin: Create Wallet Modal -->
+            <div id="create-wallet-modal" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    
+                    <h2 class="uk-modal-title">Create New Wallet</h2>
+                    <form id="gw-create-wallet-form">
+                        <!-- Begin GW Field: Email Address -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input name="gw_identityData" class="uk-input uk-form-width-large" type="email" placeholder="Gifto wallet email address register">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Email Address -->
+
+                        <!-- Begin GW Field: Firstname -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                <input name="gw_firstname" class="uk-input uk-form-width-large" type="text" placeholder="Firstname">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Firstname -->
+
+                        <!-- Begin GW Field: Lastname -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                <input name="gw_lastname" class="uk-input uk-form-width-large" type="text" placeholder="Lastname">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Lastname -->
+
+                        <!-- Begin GW Field: Wallet Password -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                <input name="gw_passphrase" class="uk-input uk-form-width-large" type="password" placeholder="Gifto wallet password">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Wallet Password -->
+
+                        <!-- Begin GW Wallet Create Submit Field -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <button onclick="window.GiftoWalletHtml.createNewWallet('gw-create-wallet-form')" type="button" class="uk-button uk-button-primary">Create new Wallet</button>
+                            </div>
+                        </div>
+                        <!-- Close GW Wallet Create Submit Field -->
+                    </form>
+                </div>
+            </div>
+            <!-- Close: Create Wallet Modal -->
+        </div>
+        <!-- Init Wallet -->
+        <div class="uk-container" style="padding-top: 100px;">
+            <h1 class="uk-heading-bullet">Wallet detail</h1>
+            <p class="code">Javascript SDK: <span class="uk-text-success">window.GiftoSDKApi.detailWallet()</span></p>
+            <p class="code">Javascript SDK HTML: <span class="uk-text-success">window.GiftoSDKApi.getWalletDetail()</span></p>
+            <p>Click to test SDK function</p>
+
+            <button class="uk-button" uk-toggle="target: #detail-wallet-modal">Wallet Detail</button>
+
+             <!-- This is the modal -->
+            <div id="detail-wallet-modal" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">Wallet Detail</h2>
+                    <form id="gw-wallet-detail-form">
+                        <!-- Begin GW Field: Email Address -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input name="gw_identityData" class="uk-input uk-form-width-large" type="email" placeholder="Gifto wallet email address register">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Email Address -->
+
+                        <!-- Begin GW Wallet Create Submit Field -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <button onclick="window.GiftoWalletHtml.getWalletDetail('gw-wallet-detail-form')" type="button" class="uk-button uk-button-primary">Detail wallet</button>
+                            </div>
+                        </div>
+                        <!-- Close GW Wallet Create Submit Field -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Transfer Gifto -->
+        <div class="uk-container" style="padding-top: 100px;">
+            <h1 class="uk-heading-bullet">Transfer Gifto</h1>
+            <p class="code">Javascript SDK: <span class="uk-text-success">window.GiftoSDKApi.transferCoin()</span></p>
+            <p class="code">Javascript SDK HTML: <span class="uk-text-success">window.GiftoSDKApi.transferGiftoCoin()</span></p>
+            <p>Click to test SDK function</p>
+
+            <button class="uk-button" uk-toggle="target: #transfer-gifto-modal">Transfer Gifto</button>
+
+             <!-- This is the modal -->
+            <div id="transfer-gifto-modal" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">Transfer Gifto</h2>
+                    <form id="gw-transfer-gifto-form">
+                        <!-- Begin GW Field: Email Address -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input name="gw_identityData" class="uk-input uk-form-width-large" type="email" placeholder="Gifto wallet email address register">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Email Address -->
+
+                         <!-- Begin GW Field: Amount -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input name="gw_amount" class="uk-input uk-form-width-large" type="number" placeholder="Amount of gifto">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Amount -->
+
+                        <!-- Begin GW Field: Currency code -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input disabled class="uk-input uk-form-width-large" type="text" value="RSC">
+                                <input type="hidden" name="gw_currencyCode" value="RSC">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Currentcy code -->
+
+                        <!-- Begin GW Field: To Wallet Address -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input name="gw_toWalletAddress" class="uk-input uk-form-width-large" type="email" placeholder="Wallet Address to transfer">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: To Wallet Address -->
+
+                        <!-- Begin GW Field: referenceId -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input disabled class="uk-input uk-form-width-large" type="text" value="referenceId">
+                                <input type="hidden" name="gw_referenceId" value="referenceId">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: referenceId -->
+
+                        <!-- Begin GW Field: note -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                 <textarea class="uk-textarea" name="gw_note" placeholder="Transaction note"></textarea>
+                            </div>
+                        </div>
+                        <!-- Close GW Field: note -->
+
+                         <!-- Begin GW Field: Wallet Transaction Mode -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                               <select class="uk-select" name="gw_transferFeeType">
+                                    <option value="sender" selected="selected">Sender</option>
+                                    <option value="receiver">Receiver</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Wallet Transaction Mode -->
+
+                         <!-- Begin GW Field: Wallet Password -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                <input name="gw_passphrase" class="uk-input uk-form-width-large" type="password" placeholder="Gifto wallet password">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Wallet Password -->
+
+                       
+                        <!-- Begin GW Wallet Create Submit Field -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input type="hidden" name="gw_type" value="transfer">
+                                <button onclick="window.GiftoWalletHtml.transferGiftoCoin('gw-transfer-gifto-form')" type="button" class="uk-button uk-button-primary">Transfer Gifto</button>
+                            </div>
+                        </div>
+                        <!-- Close GW Wallet Create Submit Field -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- List Transaction -->
+        <div class="uk-container" style="padding-top: 100px;">
+            <h1 class="uk-heading-bullet">List Transaction</h1>
+            <p class="code">Javascript SDK: <span class="uk-text-success">window.GiftoSDKApi.listTransactions()</span></p>
+            <p class="code">Javascript SDK HTML: <span class="uk-text-success">window.GiftoSDKApi.walletListTransactions()</span></p>
+            <p>Click to test SDK function</p>
+
+            <button class="uk-button" uk-toggle="target: #list-transaction-modal">List Transactions</button>
+
+            <!-- This is the modal -->
+            <div id="list-transaction-modal" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">List Transaction</h2>
+                    <form id="gw-transaction-list-form">
+                        <!-- Begin GW Field: Email Address -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input name="gw_identityData" class="uk-input uk-form-width-large" type="email" placeholder="Gifto wallet email address register">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Email Address -->
+
+                        <!-- Begin GW Field: Firstname -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input name="gw_offset" class="uk-input uk-form-width-large" type="number" placeholder="List offset">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Firstname -->
+
+                        <!-- Begin GW Field: Lastname -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <input name="gw_limit" class="uk-input uk-form-width-large" type="number" placeholder="List limit">
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Lastname -->
+
+                        <!-- Begin GW Field: Wallet Transaction Mode -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                               <select class="uk-select" name="gw_transactionType">
+                                    <option value="all" selected="selected">All</option>
+                                    <option value="tranfer">Transfer</option>
+                                    <option value="tip"></option>
+                                    <option value="withdraw"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Wallet Transaction Mode -->
+
+                        <!-- Begin GW Field: Wallet Transaction Mode -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                               <select class="uk-select" name="gw_transactionMode">
+                                    <option value="send" selected="selected">Send</option>
+                                    <option value="receive">Receive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Close GW Field: Wallet Transaction Mode -->
+
+                        <!-- Begin GW Wallet Create Submit Field -->
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <button onclick="window.GiftoWalletHtml.walletListTransactions('gw-transaction-list-form')" type="button" class="uk-button uk-button-primary">List transactions</button>
+                            </div>
+                        </div>
+                        <!-- Close GW Wallet Create Submit Field -->
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-container" style="padding-top: 100px;"></div>
+
+        <!-- This is the modal -->
+        <div id="transfer-gifto-modal" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <h2 class="uk-modal-title">Transfer Gifto</h2>
+                <form gw-transfer-form></form>
+            </div>
+        </div>
+        
+    </body>
+</html>
